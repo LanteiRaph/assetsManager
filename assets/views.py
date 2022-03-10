@@ -19,30 +19,25 @@ from .models import Equipment, General, ReturnDetail, RequestDetails, RequestLis
 class Home(TemplateView):
     # returns  a complete page with server side data.
     def get(self, request):
-        # Before proceesind check if user is regiater in local db
-        if request.user.last_login == timezone.now():
-            # Get all the equipments
-            equipments = Equipment.objects.all().select_related("make")
-            # Paginate the eqipments for better user experince
-            equipments_pages = Paginator(equipments, 8)
-            page_number = request.GET.get("page")
-            page_obj = equipments_pages.get_page(page_number)
-            # Get All the general ewuipemtns
-            generals = General.objects.all().select_related("make")
-            # Get all the previous request for the current user
-            prev_request = RequestList.objects.all().filter(user=request.user.id)
-            # set the value for display
-            context = {
-                "equipment_pages": page_obj,
-                "generals": generals,
-                "user": request.user,
-                "prev_request": prev_request
-            }
-            # render the tamplate with the data
-            return render(request, "home.html", context=context)
-        else:
-            # Redirect the user to registration.
-            return redirect('/onboarding/register-user/')
+        # Get all the equipments
+        equipments = Equipment.objects.all().select_related("make")
+        # Paginate the eqipments for better user experince
+        equipments_pages = Paginator(equipments, 8)
+        page_number = request.GET.get("page")
+        page_obj = equipments_pages.get_page(page_number)
+        # Get All the general ewuipemtns
+        generals = General.objects.all().select_related("make")
+        # Get all the previous request for the current user
+        prev_request = RequestList.objects.all().filter(user=request.user.id)
+        # set the value for display
+        context = {
+            "equipment_pages": page_obj,
+            "generals": generals,
+            "user": request.user,
+            "prev_request": prev_request
+        }
+        # render the tamplate with the data
+        return render(request, "home.html", context=context)
 
 
 @method_decorator(login_required, name="dispatch")

@@ -1,7 +1,7 @@
 from typing import Reversible
 from django.db import models
 
-from onboarding.models import User, Department
+from onboarding.models import User
 
 class RequestDetails(models.Model):
     request_detail = models.AutoField(primary_key=True)
@@ -41,13 +41,12 @@ class Equipment(models.Model):
 
 class Assignment(models.Model):
     assignment = models.AutoField(primary_key=True)
-    department = models.ForeignKey(Department, models.DO_NOTHING, db_column='department', blank=True, null=True)
     equipment = models.ForeignKey(Equipment, models.DO_NOTHING, db_column='equipment', blank=True, null=True)
     is_valid = models.IntegerField()
 
     class Meta:
         db_table = 'assignment'
-        unique_together = (('is_valid', 'department', 'equipment'),)
+        unique_together = (('is_valid', 'equipment'),)
 
 
     def __str__(self)-> str:

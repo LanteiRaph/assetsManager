@@ -1,23 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% extends "base.html" %}
-    {% block content %}
-    <div class="">
-        <h1 class="text-center text-xl font-bold">Admi Studio Wizard</h1>
-        <p>Welcome to Admi Stduio Wizard <em>Please Login</em>!</p>
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+    <div class="bannerSection">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="" alt="">
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <span>
-            <a href="{%url 'account_login' %}">Login</a>
-        </span>
-    </div>
-    {% endblock %}
-</body>
-</html>
+{% endblock %}
