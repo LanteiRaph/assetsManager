@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/navbar.js'%}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/model.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="">
+      {% block sidebar %}
+      <nav class="navbar">
+        <span class="open-slide" onclick="openSlideMenu()">
+          <a href="#">
+            <svg width="30" height="30">
+              <path d="M0,5 30,5" stroke="#FFF" stroke-width="5"/>
+              <path d="M0,14 30,14" stroke="#FFF" stroke-width="5"/>
+              <path d="M0,23 30,23" stroke="#FFF" stroke-width="5"/>
+            </svg>
+          </a>
+        </span>
+        <ul class="nav__items">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'request_list' %}">My Request List <span id='requestCount'></span></a>
+          <li><a href="">All Assets</a></li>
+          <li><a href="{% url 'account_logout' %}">LogOut</a></li>
+        </ul>
+      </nav>
+      <div id="side-menu" class="side-nav">
+        <a href="#"><btn class="btn-close" onclick="closeSlideMenu()">&times;</a>
+          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'request_list' %}">About</a>
+          <a href="">Services</a>
+          <a href="#">Contact</a>
+      </div>
+      {% endblock %}
+      <div class="main">{% block content %}
+        {% endblock %}</div>
+    </div>
+  </div>
+</body>
+</html>

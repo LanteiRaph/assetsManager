@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends "assets.html" %} {% block content %} {% load static %}
+    <script src="{% static 'js/request-list.js' %}"></script>
+    <div class="" id="request-list">
+      <table class=""></table>
+      <div id="current-request">
+        <button id="make-request">Make Request</button>
+      </div>
+      <div id="no-current" style="display: none">
+        <div class="">
+          <span>No Requested Equipments, Please make a request.</span>
+        </div>
+        <div>
+          <a href="{%url 'Home' %}">Make Request</a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>

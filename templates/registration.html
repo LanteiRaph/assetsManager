@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends "assets.html" %} {% block content %} {% load static %}
+    <script src="{% static 'js/register.js' %}"></script>
+    <div class="" id="request-list">
+        <form id='user_registration'>
+            <label for="first_name">First name</label>
+            <input type="text" name="first_name" id="first_name" required>
+            <label for="first_name">Last name</label>
+            <input type="text" name="last_name" id="last_name" required>
+            <h4 for="user_type">User Type</h4>
+            <label for="student">Student</label>
+            <input type="radio" name="user_type" value="student" id="student">
+            <label for="staff">Staff</label>
+            <input type="radio" name="user_type" value="staff" id='staff'>
+            <label for="id_no">National Id No. or Student ID No.</label>
+            <input type="text" name="id_no" id="id_no">
+            <label for="departament">Department</label>
+            <input type="text" name="department" id="department" required>
+            <input type="text" name="phone" id="phone" required>
+            <button type="submit" id='register_user'>Submit</button>
+        </form>
+    </div>
+    {% endblock %}
+  </body>
+</html>

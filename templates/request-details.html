@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends "assets.html" %}
+    {% block content %} {% load static %}
+    <script src="{% static 'js/request-details.js' %}"></script>
+    <div class="" id="request-list">
+      <div class="details-header" id="details-header">
+            <table>
+              <thead>
+                <th>Name</th>
+                <th>Id No.:</th>
+                <th>Phone</th>
+                <th>Time Out</th>
+                <th>Time In</th>
+              </thead>
+              <tbody>
+                {%for user in request%}
+                 <tr>
+                   <td>{{user.user.name}}</td>
+                   <td>{{user.user.id}}</td>
+                   <td>{{user.user.phone}}</td>
+                   <td>{{user.date_out}}</td>
+                   <td>{{user.date_in}}</td>
+                 </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+      </div>
+      <div>
+        <button id="return_items" >Return</button>
+      </div>
+      <table class="">
+          <thead>
+              <tr>
+                  <th>Equipment</th>
+                  <th>Quantity</th>
+                  <th>Pick Up Condition</th>
+                  <th></th>
+                  <th></th>
+                  <th>Returing Condition</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for detail in requestDetails %}
+            <tr id='{{detail.request_detail}}'>
+                <td>{{detail.0}}</td>
+                <td>
+                  <span id='qty-server'>{{detail.1}}</span>
+                  <input type="number" name="qty" id="qty" style="display: none;">
+                  <button id="edit_request_item">Edit</button>
+                </td>
+                <td>{{detail.2}}</td>
+                <td></td>
+                <td><button id="delete_request_item">Delete</button></td>
+                <td><input type="text" name="" id=""></td>
+            </tr>
+            {%endfor%}
+          </tbody>
+      </table>
+    </div>
+    {% endblock %}
+  </body>
+</html>
